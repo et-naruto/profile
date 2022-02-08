@@ -59,46 +59,52 @@ export default function User() {
   }, [])
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-nice-white py-2">
+    <>
       <Head>
         <title>{id}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="container mx-auto px-9">
-        <div className="grid gap-3 lg:grid-cols-4">
-          {repos.map((repo) => (
-            <div
-              className="mt-8 rounded-xl border bg-white p-6  hover:shadow-lg"
-              key={repo.id}
-            >
-              <a href={repo.html_url}>
-                <h1 className="text-2xl font-bold font-mono">{repo.name}</h1>
-                <p className="mb-4 text-sm text-gray-60">{repo.description}</p>
+      <div></div>
 
-                <span className="inline-block align-bottom font-mono">
-                  <p className="text-sm ">
-                    <span className="mr-4 font-mono">{repo.language}</span> Stars:{' '}
-                    {repo.stargazers_count}
+      <div className="flex min-h-screen flex-col items-center justify-center bg-nice-white py-2">
+        <div className="container mx-auto px-9">
+          <div className="grid gap-3 lg:grid-cols-4">
+            {repos.map((repo) => (
+              <div
+                className="cursor-pointer mt-8 rounded-xl border bg-white p-6 hover:shadow-lg"
+                key={repo.id}
+              >
+                <a href={repo.html_url}>
+                  <h1 className="font-mono text-2xl font-bold">{repo.name}</h1>
+                  <p className="text-gray-60 mb-4 text-sm">
+                    {repo.description}
                   </p>
-                </span>
-              </a>
-            </div>
-          ))}
-        </div>
-      </div>
 
-      {error ? (
-        <>
-          <p className="font-mono text-xl font-bold text-black">
-            User is unavaliable
-          </p>
-          <p className="font-mono text-xl font-bold text-red-400 text-center">
-            {error.message}
-          </p>
-          <Toaster />
-        </>
-      ) : null}
-    </div>
+                  <span className="inline-block align-bottom font-mono">
+                    <p className="text-sm ">
+                      <span className="mr-4 font-mono">{repo.language}</span>{' '}
+                      Stars: {repo.stargazers_count}
+                    </p>
+                  </span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {error ? (
+          <>
+            <p className="font-mono text-xl font-bold text-black">
+              User is unavaliable
+            </p>
+            <p className="text-center font-mono text-xl font-bold text-red-400">
+              {error.message}
+            </p>
+            <Toaster />
+          </>
+        ) : null}
+      </div>
+    </>
   )
 }
