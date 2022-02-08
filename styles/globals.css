@@ -9,3 +9,7 @@
 img {
   pointer-events: none;
 }
+
+input:focus {
+  outline: none;
+}
