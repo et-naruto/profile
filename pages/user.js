@@ -80,7 +80,7 @@ export default function User() {
         <div class="flex justify-center">
           {/* Get user avatar image */}
           <img
-            className="w-custom mt-6 rounded-full shadow-lg"
+            className="w-custom mt-7 rounded-full shadow-lg"
             src={userData?.avatar_url}
             alt="User avatar"
           />
