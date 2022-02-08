@@ -92,7 +92,7 @@ export default function User() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div class="flex flex-col items-center justify-center bg-blue-gray pb-6">
+        <div class="flex flex-col items-center justify-center bg-blue-gray h-80 pb-10">
           {/* Get user avatar image */}
           <img
             className="w-custom mt-7 rounded-full"
@@ -100,14 +100,16 @@ export default function User() {
             alt="User avatar"
           />
           <a href={userData?.html_url}>
-            <p class="mt-1 font-mono text-3xl font-bold text-white hover:text-gray-200">
+            <p class="mt-2 font-mono text-3xl font-bold text-white hover:text-gray-200">
               {userData?.login}
             </p>
           </a>
 
-          <div className="mt-3">
-            <div className="grid gap-3 lg:grid-cols-3">
-              <div className="rounded border border-gray-600 px-4 py-2 text-center">
+          <div className="mt-5">
+
+            <div className="grid grid-cols-3 gap-3 mx-5">
+
+              <div className="rounded bg-zinc-900 border border-gray-600 px-4 py-2  text-center">
                 <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
                   Followers
                 </p>
@@ -116,7 +118,7 @@ export default function User() {
                 </p>
               </div>
 
-              <div className="rounded border border-gray-600 px-4 py-2 text-center">
+              <div className="rounded border bg-zinc-900 border-gray-600 px-4 py-2 text-center">
                 <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
                   Stars
                 </p>
@@ -125,9 +127,9 @@ export default function User() {
                 </p>
               </div>
 
-              <div className="rounded border border-gray-600 px-4 py-2 text-center">
+              <div className="rounded border bg-zinc-900 border-gray-600 px-4 py-2 text-center">
                 <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
-                  Repositories
+                  Repos
                 </p>
                 <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
                 {userData?.public_repos}
@@ -147,10 +149,10 @@ export default function User() {
                   key={repo.id}
                 >
                   <a href={repo.html_url}>
-                    <h1 className="break-all font-mono text-xl font-bold">
+                    <h1 className="break-words font-mono text-xl font-bold">
                       {repo.name}
                     </h1>
-                    <p className="text-gray-60 mb-4 break-all text-sm">
+                    <p className="text-gray-60 mb-4 break-words text-sm">
                       {repo.description}
                     </p>
 

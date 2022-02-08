@@ -27,7 +27,7 @@ export default function Home() {
               label="username"
               name="username"
               type="text"
-              placeholder="Enter GitHub username"
+              placeholder="Github Username"
               onChange={handleChange}
               className=" rounded-lg py-3 px-5 text-center font-mono text-xl outline-0 	"
             />
