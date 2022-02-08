@@ -92,7 +92,7 @@ export default function User() {
         </div>
 
         <div className="flex flex-col items-center justify-center bg-nice-white ">
-          <div className="container mx-auto px-3">
+          <div className="container mx-auto px-6">
             <div className="grid gap-3 lg:grid-cols-4">
               {repos.map((repo) => (
                 <div

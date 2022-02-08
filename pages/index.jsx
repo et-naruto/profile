@@ -14,7 +14,7 @@ export default function Home() {
         </Head>
         <div >
           <form
-           className="rounded-lg border text-center font-mono outline-0 active:border-gray-200	"
+           className="rounded-lg border text-center font-mono  shadow-xl outline-0 active:border-gray-200	"
             onSubmit={(e) => {
               e.preventDefault()
               Router.push({
@@ -28,7 +28,7 @@ export default function Home() {
               name="username"
               type="text"
               onChange={handleChange}
-              className=" py-3 px-5 rounded-lg text-center font-mono text-xl shadow-xl outline-0 	"
+              className=" py-3 px-5 rounded-lg text-center font-mono text-xl outline-0 	"
             />
           </form>
         </div>
