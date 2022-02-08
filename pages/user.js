@@ -6,18 +6,6 @@ import React from 'react'
 import useSWR from 'swr'
 import toast, { Toaster } from 'react-hot-toast'
 
-const notify = () =>
-  toast.error(
-    <span>
-      <a href="/">
-        <button className="rounded-md border bg-gray-100 px-2 py-1 font-mono hover:border-gray-300 hover:bg-gray-200">
-          {' '}
-          Go Back{' '}
-        </button>{' '}
-      </a>
-    </span>
-  )
-
 const fetcher = async (url) => {
   const res = await fetch(url)
 
@@ -53,10 +41,6 @@ export default function User() {
     }
   }, [data])
 
-  // notify() on load
-  useEffect(() => {
-    notify()
-  }, [])
 
   // If repo.length is 0, show a message
   if (repos.length < 1) {
@@ -92,7 +76,7 @@ export default function User() {
         <div className="grid gap-3 lg:grid-cols-4">
           {repos.map((repo) => (
             <div
-              className="mt-8 rounded-xl border bg-white p-6  hover:shadow-lg"
+              className="mt-8 rounded-xl border bg-white p-6 hover:shadow-lg cursor-pointer"
               key={repo.id}
             >
               <a href={repo.html_url}>
