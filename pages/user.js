@@ -64,23 +64,30 @@ export default function User() {
   // If repo.length is 0, show a message
   if (repos.length < 1) {
     return (
-      <div className="flex h-screen flex-col items-center justify-center bg-nice-white px-6">
-        <h1 className="text-center text-2xl font-bold text-black">
-          {' '}
-          No repos found for {id}
-        </h1>
+      <>
         {error ? (
-          <p className="mt-3 text-center font-mono text-xl font-bold text-red-500">
-            {error.message}
-          </p>
+          <Head>
+            <title>Error | {error.message}</title>
+          </Head>
         ) : null}
+        <div className="flex h-screen flex-col items-center justify-center bg-nice-white px-6">
+          <h1 className="text-center text-2xl font-bold text-black">
+            {' '}
+            No users or orgs found for {id}
+          </h1>
+          {error ? (
+            <p className="mt-3 text-center font-mono text-xl font-bold text-red-500">
+              {error.message}
+            </p>
+          ) : null}
 
-        <a href="/">
-          <button className="mt-4 rounded-md border bg-gray-100 px-2 py-1 font-mono hover:border-gray-300 hover:bg-gray-200">
-            Go Back
-          </button>
-        </a>
-      </div>
+          <a href="/">
+            <button className="mt-4 rounded-md border bg-gray-100 px-2 py-1 font-mono hover:border-gray-300 hover:bg-gray-200">
+              Go Back
+            </button>
+          </a>
+        </div>
+      </>
     )
   }
 
@@ -92,7 +99,7 @@ export default function User() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div class="flex flex-col items-center justify-center bg-blue-gray h-80 pb-10">
+        <div class="flex h-80 flex-col items-center justify-center bg-blue-gray pb-10">
           {/* Get user avatar image */}
           <img
             className="w-custom mt-7 rounded-full"
@@ -106,10 +113,8 @@ export default function User() {
           </a>
 
           <div className="mt-5">
-
-            <div className="grid grid-cols-3 gap-3 mx-5">
-
-              <div className="rounded bg-zinc-900 border border-gray-600 px-4 py-2  text-center">
+            <div className="mx-5 grid grid-cols-3 gap-3">
+              <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2  text-center">
                 <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
                   Followers
                 </p>
@@ -118,7 +123,7 @@ export default function User() {
                 </p>
               </div>
 
-              <div className="rounded border bg-zinc-900 border-gray-600 px-4 py-2 text-center">
+              <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2 text-center">
                 <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
                   Stars
                 </p>
@@ -127,15 +132,14 @@ export default function User() {
                 </p>
               </div>
 
-              <div className="rounded border bg-zinc-900 border-gray-600 px-4 py-2 text-center">
+              <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2 text-center">
                 <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
                   Repos
                 </p>
                 <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
-                {userData?.public_repos}
+                  {userData?.public_repos}
                 </p>
               </div>
-
             </div>
           </div>
         </div>
@@ -145,7 +149,7 @@ export default function User() {
             <div className="grid gap-3 lg:grid-cols-4">
               {repos.map((repo) => (
                 <div
-                  className="transition ease-in-out delay-30 duration-100 mt-8 cursor-pointer rounded-xl border bg-white p-6 hover:shadow-lg"
+                  className="delay-30 mt-8 cursor-pointer rounded-xl border bg-white p-6 transition duration-100 ease-in-out hover:shadow-lg"
                   key={repo.id}
                 >
                   <a href={repo.html_url}>
