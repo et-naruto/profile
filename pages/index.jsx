@@ -14,7 +14,7 @@ export default function Home() {
         </Head>
         <div >
           <form
-           className="rounded-lg border text-center font-mono outline-0 active:border-gray-200	"
+           className="rounded-lg border text-center font-mono shadow-xl outline-0 active:border-gray-200	"
             onSubmit={(e) => {
               e.preventDefault()
               Router.push({
