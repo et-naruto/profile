@@ -66,7 +66,7 @@ export default function User() {
       </Head>
 
       <div className="container mx-auto px-9">
-        <div className="grid gap-4 lg:grid-cols-4">
+        <div className="grid gap-3 lg:grid-cols-4">
           {repos.map((repo) => (
             <div
               className="mt-8 rounded-xl border bg-white p-6  hover:shadow-lg"
@@ -74,11 +74,11 @@ export default function User() {
             >
               <a href={repo.html_url}>
                 <h1 className="text-2xl font-bold font-mono">{repo.name}</h1>
-                <p className="mb-4 text-sm text-gray-600">{repo.description}</p>
+                <p className="mb-4 text-sm text-gray-60">{repo.description}</p>
 
                 <span className="inline-block align-bottom font-mono">
                   <p className="text-sm ">
-                    <h className="mr-4 font-mono">{repo.language}</h> Stars:{' '}
+                    <span className="mr-4 font-mono">{repo.language}</span> Stars:{' '}
                     {repo.stargazers_count}
                   </p>
                 </span>
@@ -93,7 +93,7 @@ export default function User() {
           <p className="font-mono text-xl font-bold text-black">
             User is unavaliable
           </p>
-          <p className="font-mono text-xl font-bold text-red-400">
+          <p className="font-mono text-xl font-bold text-red-400 text-center">
             {error.message}
           </p>
           <Toaster />
