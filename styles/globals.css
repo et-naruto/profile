@@ -6,3 +6,6 @@
     width: 6.6rem;
 }
 
+img {
+    pointer-events: none
+  }

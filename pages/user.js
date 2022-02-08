@@ -4,7 +4,6 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import React from 'react'
 import useSWR from 'swr'
-import toast, { Toaster } from 'react-hot-toast'
 
 const fetcher = async (url) => {
   const res = await fetch(url)
@@ -96,12 +95,12 @@ export default function User() {
         <div class="flex flex-col items-center justify-center bg-blue-gray pb-6">
           {/* Get user avatar image */}
           <img
-            className="w-custom mt-7 rounded-full shadow-lg"
+            className="w-custom mt-7 rounded-full border border-4 border-sky-400/100"
             src={userData?.avatar_url}
             alt="User avatar"
           />
           <a href={userData?.html_url}>
-            <p class="font-mono text-3xl font-bold text-white hover:text-gray-200">
+            <p class="mt-1 font-mono text-3xl font-bold text-white hover:text-gray-200">
               {userData?.login}
             </p>
           </a>
@@ -128,7 +127,7 @@ export default function User() {
 
               <div className="rounded border border-gray-600 px-4 py-2 text-center">
                 <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
-                  Repository
+                  Repositories
                 </p>
                 <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
                 {userData?.public_repos}
@@ -144,7 +143,7 @@ export default function User() {
             <div className="grid gap-3 lg:grid-cols-4">
               {repos.map((repo) => (
                 <div
-                  className="mt-8 cursor-pointer rounded-xl border bg-white p-6 hover:shadow-lg"
+                  className="transition ease-in-out delay-30 duration-100 mt-8 cursor-pointer rounded-xl border bg-white p-6 hover:shadow-lg"
                   key={repo.id}
                 >
                   <a href={repo.html_url}>

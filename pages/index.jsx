@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <div className="flex min-h-screen flex-col items-center justify-center p-8 bg-nice-white">
         <Head>
-          <title>Create Next App</title>
+          <title>GitHub Profile</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div >
