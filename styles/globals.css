@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .w-custom {
-    width: 6.6rem;
+  width: 6.6rem;
 }
 
 img {
-    pointer-events: none
-  }
+  pointer-events: none;
+}

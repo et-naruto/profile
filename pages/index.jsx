@@ -7,14 +7,14 @@ export default function Home() {
   const handleChange = (e) => setUsername(e.target.value)
   return (
     <>
-      <div className="flex min-h-screen flex-col items-center justify-center p-8 bg-nice-white">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-nice-white p-8">
         <Head>
           <title>GitHub Profile</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div >
+        <div>
           <form
-           className="rounded-lg border text-center font-mono  shadow-xl outline-0 active:border-gray-200	"
+            className="rounded-lg border border-gray-500 text-center font-mono  shadow-xl outline-0 active:border-gray-600	"
             onSubmit={(e) => {
               e.preventDefault()
               Router.push({
@@ -24,11 +24,12 @@ export default function Home() {
             }}
           >
             <input
-              label='username'
+              label="username"
               name="username"
               type="text"
+              placeholder="Enter GitHub username"
               onChange={handleChange}
-              className=" py-3 px-5 rounded-lg text-center font-mono text-xl outline-0 	"
+              className=" rounded-lg py-3 px-5 text-center font-mono text-xl outline-0 	"
             />
           </form>
         </div>
