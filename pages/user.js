@@ -27,7 +27,7 @@ export default function User() {
   const { id } = router.query
   // Fetch user's repo using GITHUB API v3 using swr
   const { data, error } = useSWR(
-    `https://api.github.com/users/${id}/repos?per_page=8&sort=stargazers_count`,
+    `https://api.github.com/users/${id}/repos?per_page=8&sort=stargazers_count&direction=asc`,
     fetcher
   )
 
