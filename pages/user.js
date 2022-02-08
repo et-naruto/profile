@@ -28,7 +28,7 @@ export default function User() {
   const { id } = router.query
   // Fetch user's repo using GITHUB API v3 using swr
   const { data, error } = useSWR(
-    `https://api.github.com/users/${id}/repos?per_page=8`,
+    `https://api.github.com/users/${id}/repos?per_page=8&sort=stargazers_count`,
     fetcher
   )
 
@@ -71,7 +71,7 @@ export default function User() {
 
   return (
     <>
-      <div className="h-screen bg-nice-white">
+      <div className="h-screen bg-nice-white p-4">
         <Head>
           <title>{id}</title>
           <link rel="icon" href="/favicon.ico" />
