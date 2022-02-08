@@ -71,7 +71,7 @@ export default function User() {
 
   return (
     <>
-      <div className="h-screen bg-nice-white pb-5">
+      <div className="h-screen bg-nice-white">
         <Head>
           <title>{id}</title>
           <link rel="icon" href="/favicon.ico" />
@@ -85,14 +85,14 @@ export default function User() {
             alt="User avatar"
           />
         </div>
-        <div class="mt-3 flex justify-center">
+        <div class="mt-1 mb-1 flex justify-center">
           <a href={userData?.html_url}>
             <p class="font-mono text-3xl font-bold hover:text-gray-700">{userData?.login}</p>
           </a>
         </div>
 
-        <div className="flex flex-col items-center justify-center bg-nice-white py-2">
-          <div className="container mx-auto px-9">
+        <div className="flex flex-col items-center justify-center bg-nice-white ">
+          <div className="container mx-auto px-3">
             <div className="grid gap-3 lg:grid-cols-4">
               {repos.map((repo) => (
                 <div
