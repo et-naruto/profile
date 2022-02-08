@@ -40,7 +40,7 @@ export default function User() {
   const { id } = router.query
   // Fetch user's repo using GITHUB API v3 using swr
   const { data, error } = useSWR(
-    `https://api.github.com/users/${id}/repos`,
+    `https://api.github.com/users/${id}/repos?per_page=8`,
     fetcher
   )
 
@@ -59,42 +59,46 @@ export default function User() {
   }, [])
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-nice-white py-2">
       <Head>
         <title>{id}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
-        {error ? (
-          <>
-            <p className="font-mono text-xl font-bold text-black">
-              User is unavaliable
-            </p>
-            <p className="font-mono text-xl font-bold text-red-400">
-              {error.message}
-            </p>
-            <Toaster />
-          </>
-        ) : null}
-
-        <div className="mx-8">
+      <div className="container mx-auto px-9">
+        <div className="grid gap-4 lg:grid-cols-4">
           {repos.map((repo) => (
             <div
-              className="mt-8 rounded-2xl border p-6 font-mono shadow-lg"
+              className="mt-8 rounded-xl border bg-white p-6  hover:shadow-lg"
               key={repo.id}
             >
-              <h1 className="text-2xl font-bold">{repo.name}</h1>
-              <p className="text-md font-semibold">{repo.description}</p>
-              <p className="text-sm ">{repo.language}</p>
+              <a href={repo.html_url}>
+                <h1 className="text-2xl font-bold font-mono">{repo.name}</h1>
+                <p className="mb-4 text-sm text-gray-600">{repo.description}</p>
 
-              <p className="text-sm">
-                <StarIcon className="text-sm" /> {repo.stargazers_count}
-              </p>
+                <span className="inline-block align-bottom font-mono">
+                  <p className="text-sm ">
+                    <h className="mr-4 font-mono">{repo.language}</h> Stars:{' '}
+                    {repo.stargazers_count}
+                  </p>
+                </span>
+              </a>
             </div>
           ))}
         </div>
-      </main>
+      </div>
+
+      {error ? (
+        <>
+          <p className="font-mono text-xl font-bold text-black">
+            User is unavaliable
+          </p>
+          <p className="font-mono text-xl font-bold text-red-400">
+            {error.message}
+          </p>
+          <Toaster />
+        </>
+      ) : null}
     </div>
   )
 }
