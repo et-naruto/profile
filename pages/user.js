@@ -32,6 +32,11 @@ export default function User() {
     fetcher
   )
 
+  const { data: userData, error: userError } = useSWR(
+    `https://api.github.com/users/${id}`,
+    fetcher
+  )
+
   // Set the initial state of the component
   const [repos, setRepos] = useState([])
   // Load the repos when the component is mounted
@@ -41,12 +46,11 @@ export default function User() {
     }
   }, [data])
 
-
   // If repo.length is 0, show a message
   if (repos.length < 1) {
     return (
-      <div className="px-6 flex h-screen flex-col items-center justify-center bg-nice-white">
-        <h1 className="text-2xl text-center font-bold text-black">
+      <div className="flex h-screen flex-col items-center justify-center bg-nice-white px-6">
+        <h1 className="text-center text-2xl font-bold text-black">
           {' '}
           No repos found for {id}
         </h1>
@@ -66,38 +70,58 @@ export default function User() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-nice-white py-2">
-      <Head>
-        <title>{id}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <div className="h-screen bg-nice-white">
+        <Head>
+          <title>{id}</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <div className="container mx-auto px-9">
-        <div className="grid gap-3 lg:grid-cols-4">
-          {repos.map((repo) => (
-            <div
-              className="mt-8 rounded-xl border bg-white p-6 hover:shadow-lg cursor-pointer"
-              key={repo.id}
-            >
-              <a href={repo.html_url}>
-                <h1 className="break-all font-mono text-2xl font-bold">
-                  {repo.name}
-                </h1>
-                <p className="text-gray-60 mb-4 break-all text-sm">
-                  {repo.description}
-                </p>
+        <div class="flex justify-center">
+          {/* Get user avatar image */}
+          <img
+            className="w-custom mt-6 rounded-full shadow-lg"
+            src={userData?.avatar_url}
+            alt="User avatar"
+          />
+        </div>
+        <div class="mt-3 flex justify-center">
+          <a href={userData?.html_url}>
+            <p class="font-mono text-3xl font-bold hover:text-gray-700">{userData?.login}</p>
+          </a>
+        </div>
 
-                <span className="inline-block align-bottom font-mono">
-                  <p className="text-sm ">
-                    <span className="mr-4 font-mono">{repo.language}</span>{' '}
-                    Stars: {repo.stargazers_count}
-                  </p>
-                </span>
-              </a>
+        <div className="flex flex-col items-center justify-center bg-nice-white py-2">
+          <div className="container mx-auto px-9">
+            <div className="grid gap-3 lg:grid-cols-4">
+              {repos.map((repo) => (
+                <div
+                  className="mt-8 cursor-pointer rounded-xl border bg-white p-6 hover:shadow-lg"
+                  key={repo.id}
+                >
+                  <a href={repo.html_url}>
+                    <h1 className="break-all font-mono text-xl font-bold">
+                      {repo.name}
+                    </h1>
+                    <p className="text-gray-60 mb-4 break-all text-sm">
+                      {repo.description}
+                    </p>
+
+                    <span className="inline-block align-bottom font-mono">
+                      <p className="text-sm ">
+                        <span className="mr-4 font-mono">
+                          Language: {repo.language}
+                        </span>{' '}
+                        Stars: {repo.stargazers_count}
+                      </p>
+                    </span>
+                  </a>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
