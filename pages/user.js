@@ -71,7 +71,7 @@ export default function User() {
 
   return (
     <>
-      <div className="h-screen bg-nice-white p-4">
+      <div className="h-screen bg-nice-white">
         <Head>
           <title>{id}</title>
           <link rel="icon" href="/favicon.ico" />
@@ -91,7 +91,7 @@ export default function User() {
           </a>
         </div>
 
-        <div className="flex flex-col items-center justify-center bg-nice-white py-2">
+        <div className="mb-3 flex flex-col items-center justify-center bg-nice-white py-2">
           <div className="container mx-auto px-9">
             <div className="grid gap-3 lg:grid-cols-4">
               {repos.map((repo) => (
