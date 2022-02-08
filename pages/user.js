@@ -95,7 +95,7 @@ export default function User() {
         <div class="flex flex-col items-center justify-center bg-blue-gray pb-6">
           {/* Get user avatar image */}
           <img
-            className="w-custom mt-7 rounded-full border border-4 border-sky-400/100"
+            className="w-custom mt-7 rounded-full"
             src={userData?.avatar_url}
             alt="User avatar"
           />
