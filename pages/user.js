@@ -32,6 +32,11 @@ export default function User() {
     fetcher
   )
 
+  const { data: starsData, error: starsError } = useSWR(
+    `https://api.github.com/users/${id}/repos`,
+    fetcher
+  )
+
   const { data: userData, error: userError } = useSWR(
     `https://api.github.com/users/${id}`,
     fetcher
@@ -45,6 +50,17 @@ export default function User() {
       setRepos(data)
     }
   }, [data])
+
+  // Get total repository count
+
+  // Get total stargazers from all repos
+  const [stars, setStars] = useState(0)
+  // Load the stars when the component is mounted
+  useEffect(() => {
+    if (starsData) {
+      setStars(starsData.reduce((acc, curr) => acc + curr.stargazers_count, 0))
+    }
+  }, [starsData])
 
   // If repo.length is 0, show a message
   if (repos.length < 1) {
@@ -71,27 +87,59 @@ export default function User() {
 
   return (
     <>
-      <div className="h-screen bg-nice-white">
+      <div className="h-screen">
         <Head>
           <title>{id}</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div class="flex justify-center">
+        <div class="flex flex-col items-center justify-center bg-blue-gray pb-6">
           {/* Get user avatar image */}
           <img
             className="w-custom mt-7 rounded-full shadow-lg"
             src={userData?.avatar_url}
             alt="User avatar"
           />
-        </div>
-        <div class="mt-1 mb-1 flex justify-center">
           <a href={userData?.html_url}>
-            <p class="font-mono text-3xl font-bold hover:text-gray-700">{userData?.login}</p>
+            <p class="font-mono text-3xl font-bold text-white hover:text-gray-200">
+              {userData?.login}
+            </p>
           </a>
+
+          <div className="mt-3">
+            <div className="grid gap-3 lg:grid-cols-3">
+              <div className="rounded border border-gray-600 px-4 py-2 text-center">
+                <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
+                  Followers
+                </p>
+                <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
+                  {userData?.followers}
+                </p>
+              </div>
+
+              <div className="rounded border border-gray-600 px-4 py-2 text-center">
+                <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
+                  Stars
+                </p>
+                <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
+                  {stars}
+                </p>
+              </div>
+
+              <div className="rounded border border-gray-600 px-4 py-2 text-center">
+                <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
+                  Repository
+                </p>
+                <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
+                {userData?.public_repos}
+                </p>
+              </div>
+
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center bg-nice-white ">
+        <div className="flex flex-col items-center justify-center bg-nice-white pb-10">
           <div className="container mx-auto px-6">
             <div className="grid gap-3 lg:grid-cols-4">
               {repos.map((repo) => (
