@@ -99,7 +99,7 @@ export default function User() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div class="flex h-80 flex-col items-center justify-center bg-blue-gray pt-10 pb-10">
+        <div class="flex h-90 flex-col items-center justify-center bg-blue-gray pt-10 pb-10">
           {/* Get user avatar image */}
           <img
             className="w-custom mt-7 rounded-full"
@@ -163,12 +163,12 @@ export default function User() {
             </div>
          */}
 
-        <div className="flex flex-col items-center justify-center bg-nice-white pb-10">
+        <div className="flex flex-col items-center justify-center bg-nice-white pb-10 mt-5">
           <div className="container mx-auto px-6">
             <div className="grid md:gap-3 lg:grid-cols-4">
               {repos.map((repo) => (
                 <div
-                  className="delay-30 mt-8 cursor-pointer rounded-xl border bg-white p-6 transition duration-100 ease-in-out shadow-md hover:shadow-xl hover:-translate-y-0.5 hover:border-gray-800"
+                  className="delay-30 mt-3 cursor-pointer rounded-xl border bg-white p-6 transition duration-100 ease-in-out shadow-md hover:shadow-xl hover:border-gray-800"
                   key={repo.id}
                 >
                   <a href={repo.html_url}>
