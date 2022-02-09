@@ -23,7 +23,6 @@ const fetcher = async (url) => {
 }
 
 export default function User() {
-
   const router = useRouter()
   const { id } = router.query
   // Fetch user's repo using GITHUB API v3 using swr
@@ -94,13 +93,13 @@ export default function User() {
 
   return (
     <>
-      <div className="h-screen">
+      <div className="h-screen bg-nice-white">
         <Head>
           <title>{id}</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div class="flex h-80 flex-col items-center justify-center pt-10 bg-blue-gray pb-10">
+        <div class="flex h-80 flex-col items-center justify-center bg-blue-gray pt-10 pb-10">
           {/* Get user avatar image */}
           <img
             className="w-custom mt-7 rounded-full"
@@ -139,6 +138,31 @@ export default function User() {
           </div>
         </div>
 
+        {/*
+            <div className="grid gap-3 lg:grid-cols-3 -mt-3 mx-8 px-8">
+              <div className="rounded shadow-lg bg-white px-4 py-2  text-center">
+                <p class="font-mono text-sm font-bold text-black">Followers</p>
+                <p class="font-mono text-sm font-bold text-gray-300 ">
+                  {userData?.followers}
+                </p>
+              </div>
+
+              <div className="rounded shadow-lg bg-white px-4 py-2 text-center">
+                <p class="font-mono text-sm font-bold text-black ">Stars</p>
+                <p class="font-mono text-sm font-bold text-gray-300 ">
+                  {stars}
+                </p>
+              </div>
+
+              <div className="rounded shadow-lg bg-white px-4 py-2 text-center">
+                <p class="font-mono text-sm font-bold text-black ">Repos</p>
+                <p class="font-mono text-sm font-bold text-gray-300 ">
+                  {userData?.public_repos}
+                </p>
+              </div>
+            </div>
+         */}
+
         <div className="flex flex-col items-center justify-center bg-nice-white pb-10">
           <div className="container mx-auto px-6">
             <div className="grid gap-3 lg:grid-cols-4">
@@ -149,7 +173,8 @@ export default function User() {
                 >
                   <a href={repo.html_url}>
                     <h1 className="break-words font-mono text-xl font-bold">
-                    <RepoIcon size={20} className="mr-2 text-gray-700"/>{repo.name}
+                      <RepoIcon size={20} className="mr-2 text-gray-700" />
+                      {repo.name}
                     </h1>
                     <p className="text-gray-60 mb-4 break-words text-sm">
                       {repo.description}
