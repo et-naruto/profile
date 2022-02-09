@@ -115,28 +115,24 @@ export default function User() {
           <div className="mt-5">
             <div className="mx-5 grid grid-cols-3 gap-3">
               <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2  text-center">
-                <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
-                  Followers
-                </p>
-                <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
+                <p class="font-mono text-sm font-bold text-white">Followers</p>
+                <p class="font-mono text-sm font-bold text-gray-300 ">
                   {userData?.followers}
                 </p>
               </div>
 
               <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2 text-center">
-                <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
-                  Stars
-                </p>
-                <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
+                <p class="font-mono text-sm font-bold text-white ">Stars</p>
+                <p class="font-mono text-sm font-bold text-gray-300 ">
                   {stars}
                 </p>
               </div>
 
               <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2 text-center">
-                <p class="font-mono text-sm font-bold text-white hover:text-gray-200">
+                <p class="font-mono text-sm font-bold text-white ">
                   Repos
                 </p>
-                <p class="font-mono text-sm font-bold text-gray-300 hover:text-gray-200">
+                <p class="font-mono text-sm font-bold text-gray-300 ">
                   {userData?.public_repos}
                 </p>
               </div>
