@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { StarIcon, ArrowLeftIcon } from '@primer/octicons-react'
+import { RepoIcon } from '@primer/octicons-react'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import React from 'react'
@@ -149,7 +149,7 @@ export default function User() {
                 >
                   <a href={repo.html_url}>
                     <h1 className="break-words font-mono text-xl font-bold">
-                      {repo.name}
+                    <RepoIcon size={20} className="mr-2 text-gray-700"/>{repo.name}
                     </h1>
                     <p className="text-gray-60 mb-4 break-words text-sm">
                       {repo.description}
