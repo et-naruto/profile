@@ -9,7 +9,7 @@ module.exports = {
         headers: [
           {
             key: 'Server',
-            value: 'Cool',
+            value: 'Nginx',
           }
         ],
       },
