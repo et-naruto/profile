@@ -23,6 +23,7 @@ const fetcher = async (url) => {
 }
 
 export default function User() {
+
   const router = useRouter()
   const { id } = router.query
   // Fetch user's repo using GITHUB API v3 using swr
@@ -99,7 +100,7 @@ export default function User() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div class="flex h-80 flex-col items-center justify-center bg-blue-gray pb-10">
+        <div class="flex h-80 flex-col items-center justify-center pt-10 bg-blue-gray pb-10">
           {/* Get user avatar image */}
           <img
             className="w-custom mt-7 rounded-full"
@@ -129,9 +130,7 @@ export default function User() {
               </div>
 
               <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2 text-center">
-                <p class="font-mono text-sm font-bold text-white ">
-                  Repos
-                </p>
+                <p class="font-mono text-sm font-bold text-white ">Repos</p>
                 <p class="font-mono text-sm font-bold text-gray-300 ">
                   {userData?.public_repos}
                 </p>
