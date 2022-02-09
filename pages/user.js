@@ -113,7 +113,7 @@ export default function User() {
           </a>
 
           <div className="mt-5">
-            <div className="mx-5 grid grid-cols-3 gap-3">
+            <div className="mx-6 grid grid-cols-3 gap-3">
               <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2  text-center">
                 <p class="font-mono text-sm font-bold text-white">Followers</p>
                 <p class="font-mono text-sm font-bold text-gray-300 ">
