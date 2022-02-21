@@ -6,7 +6,12 @@ import React from 'react'
 import useSWR from 'swr'
 
 const fetcher = async (url) => {
-  const res = await fetch(url)
+  // Authorization header is required for private repos
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `token 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`,
+    },
+  })
 
   // If the status code is not in the range 200-299,
   // we still try to parse and throw it.
@@ -99,7 +104,7 @@ export default function User() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div class="flex h-90 flex-col items-center justify-center bg-blue-gray pt-10 pb-10">
+        <div className="flex h-90 flex-col items-center justify-center bg-blue-gray pt-10 pb-10">
           {/* Get user avatar image */}
           <img
             className="w-custom mt-7 rounded-full"
@@ -107,7 +112,7 @@ export default function User() {
             alt="User avatar"
           />
           <a href={userData?.html_url}>
-            <p class="mt-2 font-mono text-3xl font-bold text-white hover:text-gray-200">
+            <p className="mt-2 font-mono text-3xl font-bold text-white hover:text-gray-200">
               {userData?.login}
             </p>
           </a>
@@ -115,22 +120,22 @@ export default function User() {
           <div className="mt-5">
             <div className="mx-6 grid grid-cols-3 gap-3">
               <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2  text-center">
-                <p class="font-mono text-sm font-bold text-white">Followers</p>
-                <p class="font-mono text-sm font-bold text-gray-300 ">
+                <p className="font-mono text-sm font-bold text-white">Followers</p>
+                <p className="font-mono text-sm font-bold text-gray-300 ">
                   {userData?.followers}
                 </p>
               </div>
 
               <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2 text-center">
-                <p class="font-mono text-sm font-bold text-white ">Stars</p>
-                <p class="font-mono text-sm font-bold text-gray-300 ">
+                <p className="font-mono text-sm font-bold text-white ">Stars</p>
+                <p className="font-mono text-sm font-bold text-gray-300 ">
                   {stars}
                 </p>
               </div>
 
               <div className="rounded border border-gray-600 bg-zinc-900 px-4 py-2 text-center">
-                <p class="font-mono text-sm font-bold text-white ">Repos</p>
-                <p class="font-mono text-sm font-bold text-gray-300 ">
+                <p className="font-mono text-sm font-bold text-white ">Repos</p>
+                <p className="font-mono text-sm font-bold text-gray-300 ">
                   {userData?.public_repos}
                 </p>
               </div>
@@ -141,22 +146,22 @@ export default function User() {
         {/*
             <div className="grid gap-3 lg:grid-cols-3 -mt-3 mx-8 px-8">
               <div className="rounded shadow-lg bg-white px-4 py-2  text-center">
-                <p class="font-mono text-sm font-bold text-black">Followers</p>
-                <p class="font-mono text-sm font-bold text-gray-300 ">
+                <p className="font-mono text-sm font-bold text-black">Followers</p>
+                <p className="font-mono text-sm font-bold text-gray-300 ">
                   {userData?.followers}
                 </p>
               </div>
 
               <div className="rounded shadow-lg bg-white px-4 py-2 text-center">
-                <p class="font-mono text-sm font-bold text-black ">Stars</p>
-                <p class="font-mono text-sm font-bold text-gray-300 ">
+                <p className="font-mono text-sm font-bold text-black ">Stars</p>
+                <p className="font-mono text-sm font-bold text-gray-300 ">
                   {stars}
                 </p>
               </div>
 
               <div className="rounded shadow-lg bg-white px-4 py-2 text-center">
-                <p class="font-mono text-sm font-bold text-black ">Repos</p>
-                <p class="font-mono text-sm font-bold text-gray-300 ">
+                <p className="font-mono text-sm font-bold text-black ">Repos</p>
+                <p className="font-mono text-sm font-bold text-gray-300 ">
                   {userData?.public_repos}
                 </p>
               </div>
